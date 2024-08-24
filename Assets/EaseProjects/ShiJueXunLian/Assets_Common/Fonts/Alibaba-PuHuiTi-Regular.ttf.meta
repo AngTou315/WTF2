@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 94587dbc1fac34946bdd3017f5124725
+guid: 62b7046e9f6095c48af5068844e20714
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,12 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Alibaba PuHuiTi
   fontNames:
   - Alibaba PuHuiTi
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 9ea1abe0e028d314d88ebc8d8f5a2c26, type: 3}
-  - {fileID: 12800000, guid: eb5a336b38e244742937514b4fdeaf85, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
