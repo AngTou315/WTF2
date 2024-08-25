@@ -16,6 +16,10 @@ namespace HaoFsm
         {
             this.fsm = fsm;
         }
+        public override void OnCreate(FSMManager manager)
+        {
+            fsm.OnCreate(manager);
+        }
         public override void OnEnter()
         {
             fsm.OnEnter();
@@ -32,16 +36,17 @@ namespace HaoFsm
             fsm.OnExit();
             base.OnExit();
         }
-        // public override Node Next()
-        // {
-        //     OnExit();
-        //     if (nextNode != null)
-        //     {
-        //         nextNode.OnEnter();
-        //         return nextNode;
-        //     }
-        //     return null;
-        // }
+        public override Node Next()
+        {
+            OnExit();
+            if (nextNode != null)
+            {
+                nextNode.OnEnter();
+                nextNode.OnCreate(fsm.Manager);
+                return nextNode;
+            }
+            return null;
+        }
 
     }
 }

@@ -22,6 +22,11 @@ public class NewBehaviourScript : FSM
 
     public override void OnUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameObject go = Manager.GetData("123") as GameObject;
+            go.SetActive(false);
+        }
         Debug.Log("NewBehaviourScriptOnUpdate");
     }
 }

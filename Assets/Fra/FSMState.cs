@@ -10,12 +10,14 @@ namespace HaoFsm
     public class FSMManager : MonoBehaviour
     {
         public Node node;
-        public static Node currentState;
+        public Node currentState;
+        public List<Data> datas = new List<Data>();
         void Start()
         {
             AddNode(new Test());
             AddNode(new NewBehaviourScript());
             currentState = node;
+            currentState.OnCreate(this);
             currentState.OnEnter();
         }
 
@@ -40,10 +42,35 @@ namespace HaoFsm
             }
             current.nextNode = new StateNode<T>(node);
         }
-        public static void Next()
+        public object GetData(string key)
+        {
+            foreach (var item in datas)
+            {
+                if (item.key == key)
+                {
+                    return item.value;
+                }
+            }
+            return null;
+        }
+        public void SetData(string key, UnityEngine.Object data)
+        {
+            datas.Add(new Data()
+            {
+                key = key,
+                value = data
+            });
+        }
+        public void Next()
         {
             currentState = currentState.Next();
         }
+    }
+    [Serializable]
+    public class Data
+    {
+        public string key;
+        public UnityEngine.Object value;
     }
 
 }

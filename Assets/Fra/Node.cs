@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ease.FSM;
 using Unity.VisualScripting;
 using UnityEngine;
 namespace HaoFsm
@@ -8,6 +9,11 @@ namespace HaoFsm
     {
         public FSMState state = FSMState.None;
         public Node nextNode;
+
+        public virtual void OnCreate(FSMManager manager)
+        {
+            
+        }
 
         public virtual void OnEnter()
         {
@@ -20,14 +26,14 @@ namespace HaoFsm
         {
             state = FSMState.End;
         }
-        public Node Next()
+        public virtual Node Next()
         {
-            OnExit();
-            if (nextNode != null)
-            {
-                nextNode.OnEnter();
-                return nextNode;
-            }
+            // OnExit();
+            // if (nextNode != null)
+            // {
+            //     nextNode.OnEnter();
+            //     return nextNode;
+            // }
             return null;
         }
     }

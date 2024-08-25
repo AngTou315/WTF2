@@ -24,7 +24,15 @@ public class Test : FSM
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            FSMManager.Next();
+            var ob = Manager.GetData("456");
+            Transform trans = ob as Transform;
+            Debug.Log(trans.name);
+           
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            // 下一步
+            Manager.Next();
         }
         Debug.Log("OnUpdate");
     }
