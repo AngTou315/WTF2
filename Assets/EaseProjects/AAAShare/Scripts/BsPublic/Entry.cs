@@ -8,7 +8,6 @@ using Ease.Resource;
 using Ease.Scene;
 using Ease.Sound;
 using Ease.UI;
-using Ease.Version;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

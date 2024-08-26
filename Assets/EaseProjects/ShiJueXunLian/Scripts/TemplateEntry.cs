@@ -13,7 +13,6 @@ using Ease.Resource;
 using Ease.Scene;
 using Ease.Sound;
 using Ease.UI;
-using Ease.Version;
 using EaseProjects.AAAShare.BsModules.Scheduler;
 using EaseProjects.AAAShare.BsModules.Score;
 using EaseProjects.Template.Procedure;
@@ -30,14 +29,10 @@ namespace EaseProjects.Template.Scripts
             Entry.SetModule<IEventManager>(new DefaultEventManager());
             //资源管理器
             Entry.SetModule<IResourceManager>(new UnityResourceManager());
-            //声音管理器
+            //声音管理器////////////////////////////////////////////////////////
             Entry.SetModule<ISoundManager>(new ThirdSoundManager2());
             //设置场景管理器。
             Entry.SetModule<ISceneManager>(new UnitySeneManager());
-            //设置版本管理器;
-            var versionManager = new VersionManager();
-            Entry.SetModule<IVersionManager>(versionManager);
-            versionManager.SetVersionProvider(new DefaultVersionProvider());
             //设置流程
             IProcedure[] procedures = new IProcedure[5];
             procedures[0] = new ProcedureLaunch();
