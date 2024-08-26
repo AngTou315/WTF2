@@ -129,6 +129,10 @@ namespace AAAShare.BsModules
             var first = Datas.FirstOrDefault(x => !finishMissions.Contains(x.id));
             if (first != null && runningMissions.FirstOrDefault(x => x.Data == first) == null)
             {
+                // 然后由于逻辑层，需要继承一个包含生命周期的接口，如果直接继承IMssion，会无法实例化，因为IMssion是接口，接口无法实例化，所以去实例化实现了IMssion接口的类，即Mission，所以继承一个代理接口，然后实例化类以后，将步骤的参数，同步给当前正在执行的代理接口的实现类
+
+                // 另一种方案是，直接将Misson写成抽象类，去直接继承Misson而不是去实现接口，也可实现
+
                 var newMission = new Mission(first);
                 newMission.OnEnable();
                 runningMissions.Add(newMission);

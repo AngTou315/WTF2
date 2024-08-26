@@ -3,7 +3,7 @@
 
     
     /// <summary>
-    /// 任务;
+    /// 任务;任务的真正执行者
     /// </summary>
     public interface IMssion
     {

@@ -1,7 +1,7 @@
 ﻿namespace AAAShare.BsModules
 {
     /// <summary>
-    /// 
+    /// 实现了IMssion，让agent去代替执行
     /// </summary>
     public class Mission : IMssion
     {
@@ -18,6 +18,7 @@
         public void OnEnable()
         {
             State = MissionState.RUNNING;
+            // 创建代理，把参数同步给代理
             Agent = Data.Param.CreateAgent();
             Agent.Data = Data;
             Agent.OnOVer += OnOVer;

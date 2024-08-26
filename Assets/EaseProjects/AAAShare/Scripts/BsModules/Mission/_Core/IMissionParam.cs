@@ -3,6 +3,6 @@
     public interface IMissionParam
     {
         public string Des { get; }
-        IMissionAgent CreateAgent();
+        IMissionAgent CreateAgent(); // 创建代理
     }
 }
