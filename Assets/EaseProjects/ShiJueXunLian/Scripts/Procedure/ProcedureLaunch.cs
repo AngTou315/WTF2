@@ -11,18 +11,17 @@ namespace EaseProjects.Template.Procedure
 
         public override void OnEnter(Fsm<ProcedureManager> fsm)
         {
-            Ease.Logger.Log(this,"OnEnter");
+            Debug.Log("OnEnter");
         }
 
         public override void OnQuit(Fsm<ProcedureManager> fsm)
         {
-            Ease.Logger.Log(this,"OnQuit");
-
+            Debug.Log("OnQuit");
         }
 
         public override void OnUpdate(Fsm<ProcedureManager> fsm,float time,float realTime)
         {
-            Ease.Logger.Log(this,"OnUpdate",index.ToString());
+            Debug.Log("OnUpdate" + index.ToString());
             index++;
             if (index > changeIndex)
             {

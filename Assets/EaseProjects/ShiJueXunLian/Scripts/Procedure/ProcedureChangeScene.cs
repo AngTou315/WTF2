@@ -16,19 +16,19 @@ namespace EaseProjects.Template.Procedure
 
         public override void OnEnter(Fsm<ProcedureManager> fsm)
         {
-            Ease.Logger.Log(this,"OnEnter");
+            Debug.Log("ProcedureChangeScene OnEnter");
             newScene = (string)fsm.GetData("newScene");
             Entry.GetModule<ISceneManager>().ChangeSceneAsync(newScene, LoadSceneMode.Single, OnStartLoad, OnEndLoad, OnLoadProgress);
         }
 
         public override void OnQuit(Fsm<ProcedureManager> fsm)
         {
-            Ease.Logger.Log(this,"OnQuit");
+            Debug.Log("OnQuit");
         }
 
         public override void OnUpdate(Fsm<ProcedureManager> fsm, float time, float realTime)
         {
-            Ease.Logger.Log(this,"OnUpdate");
+            Debug.Log("ProcedureChangeScene OnUpdate");
             if (SceneManager.GetActiveScene().name.Equals(newScene) && newScene.Equals("Login"))
             {
                 ChangeProcedure<ProcedureLogin>(fsm);

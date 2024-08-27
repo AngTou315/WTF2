@@ -17,7 +17,6 @@ namespace AAAShare.BsPublic
         protected virtual void Start()
         {
             DontDestroyOnLoad(this);
-            InitCommon();
         }
 
         protected virtual void Update()
@@ -27,7 +26,6 @@ namespace AAAShare.BsPublic
 
         protected virtual void OnDestroy()
         {
-            ResetCommon();
             ModuleManager.OnClose();
         }
 
@@ -44,21 +42,6 @@ namespace AAAShare.BsPublic
         public static T GetModule<T>() where T : class
         {
             return ModuleManager.GetModule<T>();
-        }
-
-        private void InitCommon()
-        {
-            Ease.Logger.PrefixLog = "EASE";
-            Ease.Logger.PrefixError = "EASE";
-            Ease.Logger.PrefixWarning = "EASE";
-            Ease.Logger.eventLog += Debug.Log;
-            Ease.Logger.eventLogError += Debug.LogError;
-            Ease.Logger.eventLogWarning += Debug.LogWarning;
-        }
-
-        private void ResetCommon()
-        {
-            Ease.Logger.Reset();
         }
 
 #if UNITY_EDITOR

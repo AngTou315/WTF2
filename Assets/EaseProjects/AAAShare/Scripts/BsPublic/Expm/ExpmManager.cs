@@ -21,8 +21,6 @@ namespace AAAShare.BsPublic.Expm
             missionLogic = expmGo.GetComponentInChildren<IMissionLogic>();
             missionLogic.OnStateChange += OnStateChange;
             missionLogic.OnChange += OnChange;
-            missionLogic.Log += Ease.Logger.Log;
-            missionLogic.LogError += Ease.Logger.LogError;
         }
 
         public void UnLoadExpm()

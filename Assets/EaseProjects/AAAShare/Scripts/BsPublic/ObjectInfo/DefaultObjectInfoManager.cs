@@ -24,11 +24,11 @@ namespace AAAShare.BsPublic.ObjectInfo
 
             if (info != null)
             {
-                Ease.Logger.Log($"{GetType().Name} Show {go.name} {info.name} {info.des}");
+                Debug.Log($"{GetType().Name} Show {go.name} {info.name} {info.des}");
                 Entry.GetModule<IEventManager>().FireNow(this, new ObjectInfoEventArgs() { show = true, objectInfo = info });
             }
             else
-                Ease.Logger.LogError($"{GetType().Name} Show {go.name} fail");
+                Debug.LogError($"{GetType().Name} Show {go.name} fail");
         }
 
         public void Hide(GameObject go)
@@ -44,11 +44,11 @@ namespace AAAShare.BsPublic.ObjectInfo
 
             if (info != null)
             {
-                Ease.Logger.Log($"{GetType().Name} Hide {go.name} {info.name} {info.des}");
+                Debug.Log($"{GetType().Name} Hide {go.name} {info.name} {info.des}");
                 Entry.GetModule<IEventManager>().FireNow(this, new ObjectInfoEventArgs() { show = false, objectInfo = info });
             }
             else
-                Ease.Logger.LogError($"{GetType().Name} Hide {go.name} fail");
+                Debug.LogError($"{GetType().Name} Hide {go.name} fail");
         }
 
         public void Register(ObjectInfoPool pool)

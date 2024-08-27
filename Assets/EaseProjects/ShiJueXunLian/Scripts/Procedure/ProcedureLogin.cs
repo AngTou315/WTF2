@@ -19,7 +19,7 @@ namespace EaseProjects.Template.Procedure
             set
             {
                 _gotoMain = value;
-                Ease.Logger.Log(this, "goToMain", _gotoMain.ToString());
+                Debug.Log( "goToMain" + _gotoMain.ToString());
             }
         }
 

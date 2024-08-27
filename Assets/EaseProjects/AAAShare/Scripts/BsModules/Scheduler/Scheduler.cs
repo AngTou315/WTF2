@@ -6,15 +6,15 @@ namespace EaseProjects.AAAShare.BsModules.Scheduler
     {
         public Scheduler()
         {
-            Logger += Ease.Logger.Log;
-            LoggerError += Ease.Logger.LogError;
+            //Logger += Ease.Logger.Log;
+            //LoggerError += Ease.Logger.LogError;
         }
 
         public override void OnClose()
         {
             base.OnClose();
-            Logger -= Ease.Logger.Log;
-            LoggerError -= Ease.Logger.LogError;
+            //Logger -= Ease.Logger.Log;
+            //LoggerError -= Ease.Logger.LogError;
         }
     }
 }

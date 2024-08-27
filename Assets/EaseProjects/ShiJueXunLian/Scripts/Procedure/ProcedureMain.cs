@@ -21,7 +21,7 @@ namespace EaseProjects.Template.Procedure
         public override void OnEnter(Fsm<ProcedureManager> fsm)
         {
             backToLogin = false;
-            Ease.Logger.Log(this, "OnEnter");
+            Debug.Log( "OnEnter");
             //加载实验；
             Entry.GetModule<IExpmManager>().LoadExpm();
             //加载菜单
