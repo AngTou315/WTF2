@@ -16,7 +16,6 @@ namespace EaseProjects.Template.Procedure
 
         public override void OnEnter(Fsm<ProcedureManager> fsm)
         {
-            Debug.Log("ProcedureChangeScene OnEnter");
             newScene = (string)fsm.GetData("newScene");
             Entry.GetModule<ISceneManager>().ChangeSceneAsync(newScene, LoadSceneMode.Single, OnStartLoad, OnEndLoad, OnLoadProgress);
         }
