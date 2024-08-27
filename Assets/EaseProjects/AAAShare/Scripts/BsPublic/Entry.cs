@@ -6,7 +6,6 @@ using Ease.Event;
 using Ease.Procedure;
 using Ease.Resource;
 using Ease.Scene;
-using Ease.Sound;
 using Ease.UI;
 using Sirenix.OdinInspector;
 using UnityEngine;

@@ -11,7 +11,6 @@ using Ease.Event;
 using Ease.Procedure;
 using Ease.Resource;
 using Ease.Scene;
-using Ease.Sound;
 using Ease.UI;
 using EaseProjects.AAAShare.BsModules.Scheduler;
 using EaseProjects.AAAShare.BsModules.Score;
@@ -29,8 +28,6 @@ namespace EaseProjects.Template.Scripts
             Entry.SetModule<IEventManager>(new DefaultEventManager());
             //资源管理器
             Entry.SetModule<IResourceManager>(new UnityResourceManager());
-            //声音管理器////////////////////////////////////////////////////////
-            Entry.SetModule<ISoundManager>(new ThirdSoundManager2());
             //设置场景管理器。
             Entry.SetModule<ISceneManager>(new UnitySeneManager());
             //设置流程
