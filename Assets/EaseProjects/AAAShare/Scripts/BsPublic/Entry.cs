@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace AAAShare.BsPublic
 {
-    public partial class Entry : MonoBehaviour
+    public class Entry : MonoBehaviour
     {
         protected virtual void Start()
         {

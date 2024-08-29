@@ -14,7 +14,7 @@ namespace AAAShare.BsPublic.Agent
         public void OnEnable()
         {
             var param = Data.Param as MPXuanJingPian;
-            OnOVer?.Invoke();
+            param.xuanJingPian.heiseJingPianXianShi(OnOVer);
         }
 
         public void OnDisable()

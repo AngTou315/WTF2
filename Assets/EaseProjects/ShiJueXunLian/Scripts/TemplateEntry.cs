@@ -25,11 +25,11 @@ namespace EaseProjects.Template.Scripts
         {
             base.Start();
             //事件系统；
-            Entry.SetModule<IEventManager>(new DefaultEventManager());
+            SetModule<IEventManager>(new DefaultEventManager());
             //资源管理器
-            Entry.SetModule<IResourceManager>(new UnityResourceManager());
+            SetModule<IResourceManager>(new UnityResourceManager());
             //设置场景管理器。
-            Entry.SetModule<ISceneManager>(new UnitySeneManager());
+            SetModule<ISceneManager>(new UnitySeneManager());
             //设置流程
             IProcedure[] procedures = new IProcedure[5];
             procedures[0] = new ProcedureLaunch();
@@ -37,25 +37,25 @@ namespace EaseProjects.Template.Scripts
             procedures[2] = new ProcedureLogin();
             procedures[3] = new ProcedureMain();
             procedures[4] = new ProcedureSettlement();
-            Entry.SetModule<IProcedureManager>(new ProcedureManager(procedures));
+            SetModule<IProcedureManager>(new ProcedureManager(procedures));
             //设置UI管理器
-            Entry.SetModule<IUIManager>(GetComponentInChildren<DefaultUIManager>());
+            SetModule<IUIManager>(GetComponentInChildren<DefaultUIManager>());
             //设置配置表管理器;
-            Entry.SetModule<IConfigManager>(GetComponentInChildren<BaseConfigManager>());
+            SetModule<IConfigManager>(GetComponentInChildren<BaseConfigManager>());
             //设置项目管理器
-            Entry.SetModule<IProjectManager>(GetComponentInChildren<ProjectManager>());
+            SetModule<IProjectManager>(GetComponentInChildren<ProjectManager>());
             //设置expm管理器
-            Entry.SetModule<IExpmManager>(new ExpmManager());
+            SetModule<IExpmManager>(new ExpmManager());
             //设置物品指示器
-            Entry.SetModule<IObjectInfoManager>(new DefaultObjectInfoManager());
+            SetModule<IObjectInfoManager>(new DefaultObjectInfoManager());
             //设置高亮:
-            Entry.SetModule<IHightLightManager>(new HightLightManager());
+            SetModule<IHightLightManager>(new HightLightManager());
             //设置调度管理器:
-            Entry.SetModule<IScheduler>(new Scheduler());
+            SetModule<IScheduler>(new Scheduler());
             //设置成绩:
-            Entry.SetModule<IScoreManager>(new AIScoreManager());
+            SetModule<IScoreManager>(new AIScoreManager());
             //开始项目；
-            Entry.GetModule<IProcedureManager>().ChangeProcedure<ProcedureLaunch>();
+            GetModule<IProcedureManager>().ChangeProcedure<ProcedureLaunch>();
         }
     }
 }
