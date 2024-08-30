@@ -34,9 +34,9 @@ namespace AAAShare.BsPublic
             Destroy(this);
         }
 
-        public static void SetModule<T>(IModule module) where T : class
+        public static void AddModule<T>(IModule module) where T : class
         {
-            ModuleManager.SetModule<T>(module);
+            ModuleManager.AddModule<T>(module);
         }
 
         public static T GetModule<T>() where T : class

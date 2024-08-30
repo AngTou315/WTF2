@@ -7,7 +7,7 @@ namespace Ease.Core
     {
         public static Dictionary<Type, IModule> Modules = new Dictionary<Type, IModule>();
 
-        public static void SetModule<T>(IModule module) where T : class
+        public static void AddModule<T>(IModule module) where T : class
         {
             if (!Modules.ContainsKey(typeof(T)))
             {

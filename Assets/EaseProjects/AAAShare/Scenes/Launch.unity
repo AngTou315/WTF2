@@ -397,7 +397,7 @@ MonoBehaviour:
   projectConfig:
     name: "\u9879\u76EE\u914D\u7F6E"
     title: "\u53CC\u773C\u89C6\u89C9\u4EFF\u771F\u5B9E\u9A8C"
-    school: "\u6F4D\u574A\u533B\u5B66\u9662"
+    school: "\u5B66\u6821"
     msPrefab: {fileID: 4739343819595603353, guid: 54610df51aff5e043965f575030af135, type: 3}
 --- !u!1 &1042471463
 GameObject:
@@ -962,7 +962,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1807711888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c32af733e9d44eb9ba0272e4ade3335, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d3e5561712300e4999dde95b6f14689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modules: []

@@ -7,12 +7,12 @@ namespace Ease.FSM
 {
     public class Fsm<T> : ILife
     {
-        private IFsmState<T> currentState;
+        private IFsmState<T> currentState;// 当前状态
 
-        private T owner;
+        private T owner;// 拥有状态机的对象
 
-        private Dictionary<string, object> dicCache;
-        private Dictionary<Type, IFsmState<T>> dicStates;
+        private Dictionary<string, object> dicCache;// 状态机内部数据缓存
+        private Dictionary<Type, IFsmState<T>> dicStates;// 状态类型与状态实例的映射
 
         public Fsm(T owner, params IFsmState<T>[] states)
         {
