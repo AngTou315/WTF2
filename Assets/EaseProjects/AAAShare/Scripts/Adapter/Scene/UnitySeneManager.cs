@@ -13,6 +13,7 @@ namespace AAAShare.Adapter
         public string name;
         public LoadSceneMode loadSceneMode;
         public AsyncOperation asyncOperation;
+        //用于处理异步操作的类。它通常用于管理和跟踪异步任务的状态
         public Action start;
         public Action end;
         public Action<float> progress;
@@ -50,7 +51,7 @@ namespace AAAShare.Adapter
             AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(name, loadSceneMode);
             start?.Invoke();
             SceneLoadingInfo loadingInfo = new SceneLoadingInfo();
-            loadingInfo.index = -1;
+            loadingInfo.index = -1;//意味着它不在当前加载的场景中。
             loadingInfo.name = name;
             loadingInfo.asyncOperation = operation;
             loadingInfo.start = start;
@@ -58,7 +59,8 @@ namespace AAAShare.Adapter
             loadingInfo.progress = progress;
             LoadingInfos.Add(loadingInfo);
         }
-
+        //该方法用于启动异步场景加载操作。通过传入场景索引、加载模式以及开始、结束、进度的回调函数，
+        //来处理场景加载的不同状态。场景加载的状态被保存在 SceneLoadingInfo 类的实例中。
         public void ChangeSceneAsync(int index, LoadSceneMode loadSceneMode, Action start, Action end, Action<float> progress)
         {
             if (LoadingInfos.FirstOrDefault(x => x.index == index) != null)
@@ -74,7 +76,7 @@ namespace AAAShare.Adapter
             loadingInfo.progress = progress;
             LoadingInfos.Add(loadingInfo);
         }
-
+        //该方法负责定期检查所有正在加载的场景的进度。如果场景加载完成，它将调用 end 回调，并将场景从正在加载的列表中移除。
         public void OnUpdate(float time, float realtime)
         {
             List<string> doneList = new List<string>();
@@ -93,7 +95,7 @@ namespace AAAShare.Adapter
             LoadingInfos.RemoveAll(x => doneList.Contains(x.name));
             doneList.Clear();
         }
-
+        // 当管理器关闭时，会清理所有未完成的加载任务，并重置所有场景加载信息。
         public void OnClose()
         {
             foreach (var sceneLoadingInfo in LoadingInfos)

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using AAAShare.BsModules;
 using AAAShare.BsModules.Param;
 using AAAShare.BsPublic.Param;
 using EaseProjects.AAAShare.BsPublic.Component;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace AAAShare.BsPublic.Agent
 {
@@ -14,7 +17,8 @@ namespace AAAShare.BsPublic.Agent
         public void OnEnable()
         {
             var param = Data.Param as MPXuanJingPian;
-            param.xuanJingPian.heiseJingPianXianShi(OnOVer);
+            OnOVer += Ass;
+            param.evt.Invoke(OnOVer);
         }
 
         public void OnDisable()
@@ -23,6 +27,10 @@ namespace AAAShare.BsPublic.Agent
 
         public void OnUpdate()
         {
+        }
+        private void Ass()
+        {
+            UnityEngine.Debug.Log("哈哈哈哈哈");
         }
     }
 }

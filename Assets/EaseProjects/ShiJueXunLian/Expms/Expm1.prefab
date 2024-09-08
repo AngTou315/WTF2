@@ -19574,7 +19574,21 @@ MonoBehaviour:
     - rid: 8094799745812791308
       type: {class: MPXuanJingPian, ns: AAAShare.BsPublic.Param, asm: Assembly-CSharp}
       data:
-        xuanJingPian: {fileID: 4538186011232172188}
+        evt:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 4538186011232172188}
+              m_TargetAssemblyTypeName: XuanJingPian, Assembly-CSharp
+              m_MethodName: heiseJingPianXianShi
+              m_Mode: 0
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: 
+                m_BoolArgument: 0
+              m_CallState: 2
 --- !u!114 &4904771350447039624
 MonoBehaviour:
   m_ObjectHideFlags: 0

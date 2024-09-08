@@ -24,12 +24,13 @@ namespace EaseProjects.Template.Scripts
         protected override void Start()
         {
             base.Start();
-            //事件系统；
+            ////事件系统；
             AddModule<IEventManager>(new DefaultEventManager());
-            //资源管理器
+            ////资源管理器
             AddModule<IResourceManager>(new UnityResourceManager());
-            //设置场景管理器。
+            ////设置场景管理器。
             AddModule<ISceneManager>(new UnitySeneManager());
+
             //设置流程
             IProcedure[] procedures = new IProcedure[5];
             procedures[0] = new ProcedureLaunch();
@@ -38,22 +39,27 @@ namespace EaseProjects.Template.Scripts
             procedures[3] = new ProcedureMain();
             procedures[4] = new ProcedureSettlement();
             AddModule<IProcedureManager>(new ProcedureManager(procedures));
+
             //设置UI管理器
             AddModule<IUIManager>(GetComponentInChildren<DefaultUIManager>());
+
             //设置配置表管理器;
             AddModule<IConfigManager>(GetComponentInChildren<BaseConfigManager>());
+
             //设置项目管理器
             AddModule<IProjectManager>(GetComponentInChildren<ProjectManager>());
             //设置expm管理器
             AddModule<IExpmManager>(new ExpmManager());
-            //设置物品指示器
-            AddModule<IObjectInfoManager>(new DefaultObjectInfoManager());
-            //设置高亮:
-            AddModule<IHightLightManager>(new HightLightManager());
-            //设置调度管理器:
-            AddModule<IScheduler>(new Scheduler());
-            //设置成绩:
-            AddModule<IScoreManager>(new AIScoreManager());
+
+            ////设置物品指示器
+            //AddModule<IObjectInfoManager>(new DefaultObjectInfoManager());
+            ////设置高亮:
+            //AddModule<IHightLightManager>(new HightLightManager());
+            ////设置调度管理器:
+            //AddModule<IScheduler>(new Scheduler());
+            ////设置成绩:
+            //AddModule<IScoreManager>(new AIScoreManager());
+
             //开始项目；
             GetModule<IProcedureManager>().ChangeProcedure<ProcedureLaunch>();
         }
