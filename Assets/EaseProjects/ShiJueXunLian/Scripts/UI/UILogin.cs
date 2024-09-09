@@ -32,7 +32,7 @@ namespace EaseProjects.Template.UI
 
         public void OnEnterGame(int difficulty)
         {
-            Entry.GetModule<IProjectManager>().difficulty = (Difficulty)difficulty;
+            //Entry.GetModule<IProjectManager>().difficulty = (Difficulty)difficulty;
             Entry.GetModule<IEventManager>().FireNow(this, new ToMainEventArgs());
         }
     }

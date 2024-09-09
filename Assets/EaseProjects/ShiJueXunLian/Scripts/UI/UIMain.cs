@@ -23,13 +23,13 @@ namespace EaseProjects.Template.UI
         protected override void OnOpen()
         {
             Entry.GetModule<IEventManager>().Bind(ExpmUpdateEventArgs.EventID, this.OnChange);
-            Entry.GetModule<IEventManager>().Bind(ObjectInfoEventArgs.EventID, this.OnChange2);
+            //Entry.GetModule<IEventManager>().Bind(ObjectInfoEventArgs.EventID, this.OnChange2);
         }
 
         protected override void OnClose()
         {
             Entry.GetModule<IEventManager>().UnBind(ExpmUpdateEventArgs.EventID, this.OnChange);
-            Entry.GetModule<IEventManager>().UnBind(ObjectInfoEventArgs.EventID, this.OnChange2);
+            //Entry.GetModule<IEventManager>().UnBind(ObjectInfoEventArgs.EventID, this.OnChange2);
         }
 
         public void OnBackToLong()

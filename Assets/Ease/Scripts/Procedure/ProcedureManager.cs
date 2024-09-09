@@ -31,6 +31,7 @@ namespace Ease.Procedure
 
         public void OnClose()
         {
+            fsm.OnClose();
         }
     }
 }

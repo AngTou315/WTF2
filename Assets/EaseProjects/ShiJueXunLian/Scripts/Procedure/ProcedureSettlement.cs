@@ -50,7 +50,7 @@ namespace EaseProjects.Template.Procedure
 
         public void OnSubmitStart()
         {
-            Entry.GetModule<IUIManager>().OpenWindow("UITipLoading", new UITipLoadingParam() { title = "提交成绩中" });
+            //Entry.GetModule<IUIManager>().OpenWindow("UITipLoading", new UITipLoadingParam() { title = "提交成绩中" });
         }
 
         public void OnSubmitOver(bool success)

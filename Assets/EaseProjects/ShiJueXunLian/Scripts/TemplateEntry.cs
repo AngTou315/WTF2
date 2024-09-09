@@ -30,6 +30,17 @@ namespace EaseProjects.Template.Scripts
             AddModule<IResourceManager>(new UnityResourceManager());
             ////设置场景管理器。
             AddModule<ISceneManager>(new UnitySeneManager());
+            //设置配置表管理器;
+            AddModule<IConfigManager>(GetComponentInChildren<BaseConfigManager>());
+            //设置UI管理器
+            AddModule<IUIManager>(GetComponentInChildren<DefaultUIManager>());
+
+
+            //设置项目管理器
+            AddModule<IProjectManager>(GetComponentInChildren<ProjectManager>());
+            //设置expm管理器
+            AddModule<IExpmManager>(new ExpmManager());
+
 
             //设置流程
             IProcedure[] procedures = new IProcedure[5];
@@ -40,16 +51,7 @@ namespace EaseProjects.Template.Scripts
             procedures[4] = new ProcedureSettlement();
             AddModule<IProcedureManager>(new ProcedureManager(procedures));
 
-            //设置UI管理器
-            AddModule<IUIManager>(GetComponentInChildren<DefaultUIManager>());
-
-            //设置配置表管理器;
-            AddModule<IConfigManager>(GetComponentInChildren<BaseConfigManager>());
-
-            //设置项目管理器
-            AddModule<IProjectManager>(GetComponentInChildren<ProjectManager>());
-            //设置expm管理器
-            AddModule<IExpmManager>(new ExpmManager());
+            
 
             ////设置物品指示器
             //AddModule<IObjectInfoManager>(new DefaultObjectInfoManager());
