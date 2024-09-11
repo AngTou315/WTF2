@@ -62,22 +62,5 @@ namespace EaseProjects.Template.UI
                 expmTip.text = msTip;
             }
         }
-
-        private void OnChange2(object sender, BaseEventArgs e)
-        {
-            if (e is ObjectInfoEventArgs args2)
-            {
-                if (args2.show)
-                {
-                    objectInfo.gameObject.SetActive(true);
-                    objectInfo.text = args2.objectInfo.name;
-                }
-                else
-                {
-                    if (objectInfo != null)
-                        objectInfo.gameObject.SetActive(false);
-                }
-            }
-        }
     }
 }

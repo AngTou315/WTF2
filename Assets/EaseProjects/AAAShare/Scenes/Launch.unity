@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414738, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -339,15 +339,6 @@ MonoBehaviour:
   - name: UITip
     Layer: 2
     prefab: {fileID: 1947121200843366362, guid: 147a19b8f36ee5f4fa20704b1043a61c, type: 3}
-  - name: UISettlement
-    Layer: 4
-    prefab: {fileID: 3849714535278251155, guid: 869013542b6f0284d9372b018654d35f, type: 3}
-  - name: UICountDown
-    Layer: 3
-    prefab: {fileID: 4764697875052583133, guid: 137845d049fd59448bc9b10a430d6385, type: 3}
-  - name: UITipLoading
-    Layer: 2
-    prefab: {fileID: 938289340266320784, guid: 0d210df773a2a73418b5d09cea6bef15, type: 3}
   layers: []
   uiList: []
 --- !u!1 &652881749

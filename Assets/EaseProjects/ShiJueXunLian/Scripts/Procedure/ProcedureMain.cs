@@ -43,7 +43,8 @@ namespace EaseProjects.Template.Procedure
                 //卸载Expm
                 Entry.GetModule<IExpmManager>().UnLoadExpm();
                 //跳转至结算结算
-                ChangeProcedure<ProcedureSettlement>(fsm);
+                fsm.SetData("newScene","Login");
+                ChangeProcedure<ProcedureChangeScene>(fsm);
             }
         }
 

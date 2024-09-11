@@ -27,7 +27,6 @@ namespace AAAShare.BsPublic
         private Action btn2CallBack;
         private UITipWindowParam uiTipWindowParam;
 
-
         protected override void OnOpen()
         {
             uiTipWindowParam = param as UITipWindowParam;

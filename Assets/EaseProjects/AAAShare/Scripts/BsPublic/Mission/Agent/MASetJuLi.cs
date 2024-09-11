@@ -4,7 +4,6 @@ using AAAShare.BsPublic.Event;
 using AAAShare.BsPublic.Param;
 using Ease.Event;
 using Ease.UI;
-using EaseProjects.AAAShare.BsModules.Scheduler;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
