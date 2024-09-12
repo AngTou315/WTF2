@@ -6,6 +6,7 @@
     public class Mission : IMssion
     {
         public MissionState State { get; set; }
+        //任务的状态，通过 OnEnable() 和 OnDisable() 方法改变任务的状态。
         public MissionData Data { get; set; }
         public IMissionAgent Agent { get; set; }
 
@@ -14,7 +15,6 @@
             this.Data = data;
             State = MissionState.INACTIVATED;
         }
-
         public void OnEnable()
         {
             State = MissionState.RUNNING;
@@ -24,7 +24,6 @@
             Agent.OnOVer += OnOVer;
             Agent.OnEnable();
         }
-
         public void OnDisable()
         {
             State = MissionState.INACTIVATED;
@@ -35,12 +34,10 @@
             Agent.OnOVer -= OnOVer;
             Agent = null;
         }
-
         public void OnUpdate()
         {
             Agent.OnUpdate();
         }
-
         private void OnOVer()
         {
             State = MissionState.OVER;

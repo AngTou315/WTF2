@@ -8,18 +8,15 @@ namespace AAAShare.BsModules
     /// </summary>
     public interface IMissionLogic
     {
-        //状态改变
+        //当任务状态变化时触发的事件
         public event Action<MissionManagerState> OnStateChange;
-
+        //其他变化时触发的事件。
         public event Action OnChange;
 
         //高亮
-        public event Action<GameObject> OnHightLightGameObject;
+        //public event Action<GameObject> OnHightLightGameObject;
 
-        //名称；
-        public string name { get; set; }
-
-        //当前步骤名称：
+        //当前任务提示，可以读取或设置。
         public string currentMissionTip { get; set; }
     }
 }

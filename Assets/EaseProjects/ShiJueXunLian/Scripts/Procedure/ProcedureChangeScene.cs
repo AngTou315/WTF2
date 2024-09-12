@@ -22,12 +22,11 @@ namespace EaseProjects.Template.Procedure
 
         public override void OnQuit(Fsm<ProcedureManager> fsm)
         {
-            Debug.Log("OnQuit");
+            Debug.Log("ChangeSceneOnQuit");
         }
 
         public override void OnUpdate(Fsm<ProcedureManager> fsm, float time, float realTime)
         {
-            Debug.Log("ProcedureChangeScene OnUpdate");
             if (SceneManager.GetActiveScene().name.Equals(newScene) && newScene.Equals("Login"))
             {
                 ChangeProcedure<ProcedureLogin>(fsm);
@@ -50,6 +49,7 @@ namespace EaseProjects.Template.Procedure
 
         private void OnLoadProgress(float progress)
         {
+
         }
     }
 }

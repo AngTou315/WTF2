@@ -17,7 +17,6 @@ namespace AAAShare.BsPublic.Agent
         public void OnEnable()
         {
             var param = Data.Param as MPCustomEvent;
-            OnOVer += Ass;
             param.evt.Invoke(OnOVer);
         }
 
@@ -27,10 +26,6 @@ namespace AAAShare.BsPublic.Agent
 
         public void OnUpdate()
         {
-        }
-        private void Ass()
-        {
-            UnityEngine.Debug.Log("哈哈哈哈哈");
         }
     }
 }

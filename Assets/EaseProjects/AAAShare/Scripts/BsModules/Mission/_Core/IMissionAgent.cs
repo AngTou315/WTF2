@@ -14,6 +14,6 @@ namespace AAAShare.BsModules
 
         public void OnEnable();
         public void OnDisable();
-        public void OnUpdate();
+        public void OnUpdate();//任务进展
     }
 }

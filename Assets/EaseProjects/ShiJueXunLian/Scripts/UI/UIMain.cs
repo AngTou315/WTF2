@@ -9,7 +9,6 @@ using Ease.Procedure;
 using Ease.UI;
 using EaseProjects.Template.Event;
 using UnityEngine;
-using FW;
 using TMPro;
 using UnityEngine.EventSystems;
 
@@ -18,23 +17,19 @@ namespace EaseProjects.Template.UI
     public class UIMain : BaseUILogic
     {
         [SerializeField] private TextMeshProUGUI expmTip = null;
-        [SerializeField] private TextMeshProUGUI objectInfo = null;
 
         protected override void OnOpen()
         {
             Entry.GetModule<IEventManager>().Bind(ExpmUpdateEventArgs.EventID, this.OnChange);
-            //Entry.GetModule<IEventManager>().Bind(ObjectInfoEventArgs.EventID, this.OnChange2);
         }
 
         protected override void OnClose()
         {
             Entry.GetModule<IEventManager>().UnBind(ExpmUpdateEventArgs.EventID, this.OnChange);
-            //Entry.GetModule<IEventManager>().UnBind(ObjectInfoEventArgs.EventID, this.OnChange2);
         }
 
         public void OnBackToLong()
         {
-            var fwClass = new FwClass();
             var param = new UITipWindowParam();
             param.title = "提示";
             param.content = "返回登录界面？";

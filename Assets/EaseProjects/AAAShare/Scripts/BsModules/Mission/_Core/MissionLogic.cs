@@ -35,55 +35,24 @@ namespace AAAShare.BsModules
         //正在进行的任务；
         public List<Mission> runningMissions = new List<Mission>();
 
-        [ShowInInspector] public int runningMissionsCount => runningMissions.Count;
-
         //完成的列表
         public List<int> finishMissions = new List<int>();
 
-        //实验状态发生了改变；
+        //实验状态变化后的事件
         public event Action<MissionManagerState> OnStateChange;
 
-        //任何变化；
+        //其他变化后的事件
         public event Action OnChange;
 
-        //播放声音
-        public event Action<String> OnPlaySound;
-
         //高亮
-        public event Action<GameObject> OnHightLightGameObject;
-
-        //log
-        public event Action<string> Log;
-
-        public event Action<string> LogError;
-
-        #region Properties
+        //public event Action<GameObject> OnHightLightGameObject;
 
         public string currentMissionTip { get; set; }
 
-        #endregion
-
-        #region UNITY
-
-        //任务数据
-        //当前激活的任务列表。
-        private void Awake()
-        {
-        }
-
-        private void OnDestroy()
-        {
-            Log = null;
-            LogError = null;
-        }
 
         private void Start()
         {
             state = MissionManagerState.RUNNING;
-            if (Log == null)
-                Log += Debug.Log;
-            if (LogError == null)
-                LogError += Debug.LogError;
         }
 
         private void Update()
@@ -93,52 +62,54 @@ namespace AAAShare.BsModules
                 var isChange = false;
                 //1更新当前激活的任务列表。
                 isChange = UpdateRunningMissions();
-                //2增加新的激活任务列表。
+                // 尝试添加新的正在运行的任务，返回是否有变化
                 isChange = AddRunningMissions() || isChange;
-                //3 更新状态
+                // 判断任务数量，如果为0改变管理器状态
                 UpdateState();
-                //4 
+                // 根据是否有变化更新其他信息
                 UpdateOther(isChange);
             }
         }
 
-        #endregion
-
         #region Logic
-
+        //负责更新正在运行的任务。遍历 要执行任务的列表runningMissions ，调用每个任务的 OnUpdate() 方法。
+        //如果任务状态变为 OVER，将其添加到 finishMissions 列表中，并移除不再运行的任务。
         private bool UpdateRunningMissions()
         {
-            //增加进完成列表
+            // 遍历当前正在运行的任务列表
             foreach (var runningMission in runningMissions)
             {
-                runningMission.OnUpdate();
+                runningMission.OnUpdate();//调用任务的 OnUpdate() 方法，更新任务。
+                //如果任务的状态变为 OVER（完成），则将该任务标记为完成，并从运行列表中移除。
                 if (runningMission.State == MissionState.OVER)
                 {
+                    //// 将任务ID添加到已完成任务列表
                     finishMissions.Add(runningMission.Data.id);
+                    // 执行任务的 OnDisable 方法
                     runningMission.OnDisable();
                 }
             }
-
             //移除所有已经完成的任务。
             var num = runningMissions.RemoveAll(item => item.State != MissionState.RUNNING);
             return num > 0;
         }
-
+        //检查 Datas 中未完成的任务，并将新的任务添加到 runningMissions 列表中，确保始终有任务在执行。
         private bool AddRunningMissions()
         {
+            // 从 Datas 列表中找到一个未完成的任务
             var first = Datas.FirstOrDefault(x => !finishMissions.Contains(x.id));
+            // 如果找到一个未完成的任务，并且该任务没有在运行列表中
             if (first != null && runningMissions.FirstOrDefault(x => x.Data == first) == null)
             {
-                // 然后由于逻辑层，需要继承一个包含生命周期的接口，如果直接继承IMssion，会无法实例化，因为IMssion是接口，接口无法实例化，所以去实例化实现了IMssion接口的类，即Mission，所以继承一个代理接口，然后实例化类以后，将步骤的参数，同步给当前正在执行的代理接口的实现类
-
-                // 另一种方案是，直接将Misson写成抽象类，去直接继承Misson而不是去实现接口，也可实现
-
+                // 创建一个新的 Mission 实例
                 var newMission = new Mission(first);
+                //// 执行新任务的 OnEnable 方法
                 newMission.OnEnable();
+                // 将新任务添加到运行任务列表中
                 runningMissions.Add(newMission);
+                // 返回 true，表示有新任务添加
                 return true;
             }
-
             return false;
         }
 
@@ -152,11 +123,15 @@ namespace AAAShare.BsModules
 
         private void UpdateOther(bool isChange)
         {
+            //// 如果还有正在运行的任务
             if (runningMissions.Count > 0)
                 currentMissionTip = runningMissions[0].Data.name;
             else
+                //// 如果都执行完了，清空任务提示
                 currentMissionTip = "";
-            if (isChange) OnChange?.Invoke();
+            //// 如果任务发生了变化，触发 OnChange 事件
+            if (isChange) 
+                OnChange?.Invoke();
         }
 
         #endregion

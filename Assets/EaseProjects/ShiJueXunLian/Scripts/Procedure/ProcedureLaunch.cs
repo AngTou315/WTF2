@@ -11,12 +11,12 @@ namespace EaseProjects.Template.Procedure
 
         public override void OnEnter(Fsm<ProcedureManager> fsm)
         {
-            Debug.Log("OnEnter");
+            Debug.Log("LaunchOnEnter");
         }
 
         public override void OnQuit(Fsm<ProcedureManager> fsm)
         {
-            Debug.Log("OnQuit");
+            Debug.Log("LaunchOnQuit");
         }
 
         public override void OnUpdate(Fsm<ProcedureManager> fsm,float time,float realTime)
