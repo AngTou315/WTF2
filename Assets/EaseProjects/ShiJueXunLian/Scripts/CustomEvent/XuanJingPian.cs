@@ -61,26 +61,35 @@ public class XuanJingPian : MonoBehaviour
         {
             jingpianButtons_heise[i].gameObject.SetActive(true);
         }
-        JingPianXianShi_Heise().Play().OnComplete(() =>
+        JingPianXianShi_Heise().Play();
+        OnOVer?.Invoke();
+    }
+    public void heiseJingPianYinCang(Action OnOVer)
+    {
+        for (int i = 0; i < jingpianButtons_heise.Count; i++)
         {
-            OnOVer?.Invoke();
-        });
+            jingpianButtons_heise[i].gameObject.SetActive(true);
+        }
+        JingPianYinCang_Heise().Play();
+        OnOVer?.Invoke();
     }
     public void XuanZhong_Hei_1(Action OnOVer)
     {
         jingpianButtons_heise[0].transform.GetComponent<Button>().onClick.AddListener(() =>
         {
             jingpianButtons_heise[0].transform.GetComponent<Button>().onClick.RemoveAllListeners();
+            ReastBlackBtnTrans().Play();
             JingPianXuanZhong(jingpianButtons_heise[0]).Play();
             OnOVer?.Invoke();
         });
     }
     public void XuanZhong_Hei_2(Action OnOVer)
     {
-        jingpianButtons_heise[0].transform.GetComponent<Button>().onClick.AddListener(() =>
+        jingpianButtons_heise[1].transform.GetComponent<Button>().onClick.AddListener(() =>
         {
-            jingpianButtons_heise[0].transform.GetComponent<Button>().onClick.RemoveAllListeners();
-            JingPianXuanZhong(jingpianButtons_heise[0]).Play();
+            jingpianButtons_heise[1].transform.GetComponent<Button>().onClick.RemoveAllListeners();
+            ReastBlackBtnTrans().Play();
+            JingPianXuanZhong(jingpianButtons_heise[1]).Play();
             OnOVer?.Invoke();
         });
     }
@@ -89,11 +98,21 @@ public class XuanJingPian : MonoBehaviour
     private Tween JingPianXuanZhong(Transform obj)
     {
         var tweens = DOTween.Sequence();
-        var tween = obj.GetChild(0).transform.DOLocalMoveY(40, 0.3f);
-        tweens.Insert(0, tween);
+        var tween2 = obj.GetChild(0).transform.DOLocalMoveY(40, 0.3f);
+        tweens.Insert(0f, tween2);
         return tweens;
     }
-    
+    //Ë¢ÐÂºÚÉ«¾µÆ¬°´Å¥Î»ÖÃ
+    private Tween ReastBlackBtnTrans()
+    {
+        var tweens = DOTween.Sequence();
+        foreach (var item in jingpianButtons_heise)
+        {
+            var tween = item.GetChild(0).transform.DOLocalMoveY(10, 0.3f);
+            tweens.Insert(0, tween);
+        }
+        return tweens;
+    }
     /// ºÚÉ«¾µÆ¬ÒÀ´ÎÏÔÊ¾¶¯»­
     private Tween JingPianXianShi_Heise()
     {
@@ -110,7 +129,23 @@ public class XuanJingPian : MonoBehaviour
         tweens.Insert(0.4f, tween);
         return tweens;
     }
+    /// ºÚÉ«¾µÆ¬ÒÀ´ÎÒþ²Ø¶¯»­
+    private Tween JingPianYinCang_Heise()
+    {
+        var tweens = DOTween.Sequence();
+        var tween = jingpianButtons_heise[0].transform.DOMove(kapianendPoint.position, 0.3f);
+        tweens.Insert(0, tween);
+        tween = jingpianButtons_heise[1].transform.DOMove(kapianendPoint.position, 0.3f);
+        tweens.Insert(0.1f, tween);
+        tween = jingpianButtons_heise[2].transform.DOMove(kapianendPoint.position, 0.3f);
+        tweens.Insert(0.2f, tween);
+        tween = jingpianButtons_heise[3].transform.DOMove(kapianendPoint.position, 0.3f);
+        tweens.Insert(0.3f, tween);
+        tween = jingpianButtons_heise[4].transform.DOMove(kapianendPoint.position, 0.3f);
+        tweens.Insert(0.4f, tween);
+        return tweens;
+    }
 
-    
-    
+
+
 }

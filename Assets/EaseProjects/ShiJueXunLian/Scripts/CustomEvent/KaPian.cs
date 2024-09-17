@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class KaPian : MonoBehaviour
 {
@@ -46,6 +47,30 @@ public class KaPian : MonoBehaviour
             jingpian.localPosition = gezi[0].localPosition;
             OnOVer?.Invoke();
         });
+    }
+    public void YueDuKaPian_1_0(Action OnOVer)
+    {
+        var tween1 = ChanChaPlayAll(2f).Play().OnComplete(() =>
+        {
+            OnOVer?.Invoke();
+        });
+        tiaoguo.gameObject.SetActive(true);
+        tiaoguo.onClick.AddListener(() =>
+        {
+            tiaoguo.onClick.RemoveAllListeners();
+            tiaoguo.gameObject.SetActive(false);
+            tween1.Pause();
+            Tiaoguo();
+            tween1.Kill();
+            jingpian.gameObject.SetActive(false);
+            jingpian.localPosition = gezi[0].localPosition;
+            OnOVer?.Invoke();
+        });
+    }
+    public void RestKaPianBiaoJi(Action OnOVer)
+    {
+        ResetBiaoJi();
+        OnOVer?.Invoke();
     }
     /// <summary>
     /// 卡片上显示黑色放大镜
@@ -90,6 +115,14 @@ public class KaPian : MonoBehaviour
         {
             biaoJi0[i].fillAmount = 0;
             biaoJi1[i].fillAmount = 1;
+        }
+    }
+    //刷新完成标记
+    private void ResetBiaoJi()
+    {
+        for (int i = 0; i < 40; i++)
+        {
+            biaoJi1[i].fillAmount = 0;
         }
     }
 }

@@ -28,6 +28,7 @@ public class YanJing : MonoBehaviour
     public void JingPianShow(Action OnOVer)
     {
         jingpian.gameObject.SetActive(true);
+        jingpian.transform.position = jingPian_point0.position;
         JingPian3DXianShi(jingPian_point1, 1, 0.3f).Play();
         OnOVer?.Invoke();
     }
