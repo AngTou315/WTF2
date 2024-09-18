@@ -82,6 +82,17 @@ public class KaPian : MonoBehaviour
         jingpian.gameObject.SetActive(true);
         jingpian.localPosition = gezi[0].localPosition;
     }
+    /// <summary>
+    /// 卡片上显示红色放大镜
+    /// </summary>
+    public void XianShiJingPian_HongSe()
+    {
+        jingpian.GetChild(0).gameObject.SetActive(false);
+        jingpian.GetChild(1).gameObject.SetActive(true);
+        jingpian.gameObject.SetActive(true);
+        jingpian.localPosition = gezi[0].localPosition;
+
+    }
     //阅读卡片格子动画
     public Tween GuanChaPlay(int index,float timer)
     {
@@ -124,5 +135,20 @@ public class KaPian : MonoBehaviour
         {
             biaoJi1[i].fillAmount = 0;
         }
+    }
+    //隐藏所有标记
+    public void YinChangBiaoJi()
+    {
+        for (int i = 0; i < biaoJi1.Count; i++)
+        {
+            biaoJi1[i].fillAmount = 0;
+        }
+    }
+    //镜片全部隐藏
+    public void JingPianYingChang()
+    {
+        jingpian.GetChild(0).gameObject.SetActive(false);
+        jingpian.GetChild(1).gameObject.SetActive(false);
+
     }
 }

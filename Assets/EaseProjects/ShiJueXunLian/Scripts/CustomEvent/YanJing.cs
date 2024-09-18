@@ -33,7 +33,7 @@ public class YanJing : MonoBehaviour
         OnOVer?.Invoke();
     }
     
-    private Tween JingPian3DXianShi(Transform point,float scal, float timer)
+    public Tween JingPian3DXianShi(Transform point,float scal, float timer)
     {
         var tweens = DOTween.Sequence();
         var tween = jingpian.DOMove(point.position,timer);
@@ -42,4 +42,5 @@ public class YanJing : MonoBehaviour
         tweens.Insert(0, tween);
         return tweens;
     }
+    
 }
